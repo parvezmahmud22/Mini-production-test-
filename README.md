@@ -1,0 +1,1 @@
+poject purpose,setup,testing,abd Git workflow
