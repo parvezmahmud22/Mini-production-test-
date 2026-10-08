@@ -1,0 +1,21 @@
+# Environment files
+.env
+.env.*
+
+# Logs
+*.log
+logs/
+
+# Dependencies
+node_modules/
+vendor/
+
+# Build/output
+dist/
+build/
+
+# IDE/editor files
+.vscode/
+.idea/
+
+# OS files
