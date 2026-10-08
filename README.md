@@ -1,112 +1,40 @@
-Mini Production Test
-Project Purpose
+# mini-prod-app
 
-This repository is a small production-style project created to practice Git and GitHub workflows used in real development environments.
+## What is this project?
+A small simulated production application repository that demonstrates
+professional Git practices: config management, health monitoring files,
+a proper .gitignore, feature branches, and Pull Requests.
 
-The project contains a sample application configuration, application health information, deployment status information, and Git configuration files.
-Project Structure
+## Project structure
+| File | Purpose |
+|------|---------|
+| `app.txt` | Sample application configuration |
+| `health.txt` | Service health information |
+| `status.txt` | Deployment status |
+| `.gitignore` | Excludes logs, env files, dependencies |
 
-.
-├── README.md       # Project documentation
-├── app.txt         # Sample application/configuration
-├── status.txt      # Production status information
-├── health.txt      # Application health information
-└── .gitignore      # Files ignored by Git
+## Setup
+```bash
+git clone https://github.com/<your-username>/mini-prod-app.git
+cd mini-prod-app
+cp .env.example .env   # if used; never commit real secrets
+```
 
-Setup
+## How to test
+1. Check config: `cat app.txt` and confirm `PORT`, `ENVIRONMENT`, `LOG_LEVEL` are set.
+2. Check health: `grep "status:" health.txt` should print `status: healthy`.
+3. Check ignore rules: `touch test.log .env && git status` should not list them.
 
-Clone the repository:
+## Git workflow
+- `main` holds stable, production-ready code.
+- Each change is built on a feature branch (`feature/...`, `hotfix/...`).
+- Commits are small and use conventional messages (`feat:`, `fix:`, `docs:`, `chore:`).
+- Branches are merged into `main` through Pull Requests.
+- Mistakes on `main` are undone with `git revert`, not by rewriting history.
 
-git clone git@github.com:parvezmahmud22/Mini-production-test-.git
-cd Mini-production-test-
-
-Check the project files:
-
-ls -la
-
-Review the application configuration:
-
-cat app.txt
-
-Check the application status:
-
-cat status.txt
-
-Check the health information:
-
-cat health.txt
-
-Testing
-
-The project can be tested by checking the configuration, status, and health files.
-
-Run:
-
-cat app.txt
-cat status.txt
-cat health.txt
-
-The expected health result is:
-
-Overall Status: PASS
-
-Git Workflow
-
-The following Git workflow was followed:
-
-    Created the repository and initialized the project.
-    Created the main branch as the primary branch.
-    Added the initial project files.
-    Created meaningful commits for different changes.
-    Created a feature branch for an additional project improvement.
-    Committed the feature separately.
-    Pushed the feature branch to GitHub.
-    Opened a Pull Request from the feature branch to main.
-    Reviewed and merged the Pull Request.
-    Updated the local main branch after the merge.
-
-The workflow was based on:
-
-main
-  |
-  +---- feature branch
-           |
-           +---- changes
-           |
-           +---- Pull Request
-                    |
-                    +---- merge
-                           |
-                           v
-                          main
-
-Production Challenge
-
-The production challenge was to make a small repository behave like a real project instead of containing only application files.
-
-During the challenge, the repository was organized with documentation, configuration, health information, status information, and a .gitignore file.
-
-An important part of the challenge was configuring GitHub authentication. Initially, GitHub rejected SSH authentication with a Permission denied (publickey) error. An ED25519 SSH key was generated and added to the SSH agent and GitHub account. After configuring SSH authentication, the repository could be accessed using the GitHub SSH remote.
-
-This demonstrated the importance of:
-
-    Git repository organization
-    Meaningful commits
-    Feature branches
-    Pull Requests
-    Production health checks
-    Secure GitHub authentication
-    Keeping unnecessary files out of version control
-
-Production Status
-
-Current application status:
-
-Application: Operational
-Environment: Production
-Version: 1.0.0
-Health: PASS
-
-Conclusion
-
-This mini production repository demonstrates a basic real-world Git workflow from development through feature branching, Pull Request review, merging, and production-style status checking.
+## Production challenge
+**What happened:** <I faild the authentication problem with github , e.g. a bad port value was merged and
+health.txt showed unhealthy>
+**How it was detected:** <e.g. health check status changed>
+**How it was fixed:** <e.g. git revert of commit abc123, service restored>
+**Lesson learned:** <e.g. review config changes in PRs, keep a health check>
