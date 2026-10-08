@@ -1,0 +1,6 @@
+sample application /config file 
+Application: Mini Production Test
+Version: 1.0.0
+Environment: production
+Port: 8080
+Status: running
