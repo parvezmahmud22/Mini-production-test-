@@ -1,0 +1,8 @@
+Health Check
+============
+
+Application: Healthy
+Database: Healthy
+API: Healthy
+Disk: Healthy
+Overall Status: PASS
